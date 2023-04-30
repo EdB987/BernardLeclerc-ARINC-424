@@ -125,15 +125,15 @@ bool FixedLengthParser::parse()
 
   while (is.good())
   {
-    // A line is a null-terminated string of 132 characters
-    char line[133] = { 0 };
+    // A line is a null-terminated string of 132 133? characters
+    char line[134] = { 0 };
 
-    // A line from the stream is 132 characters plus the End-Of-Line (EOL) delimiter
-    is.getline(line, 133);
+    // A line from the stream is 132 133? characters plus the End-Of-Line (EOL) delimiter
+    is.getline(line, 134);
     ++lineNo;
 
     // Check how many characters were actually read
-    if (is.gcount() == 133)
+    if (is.gcount() == 134)
     {
       if (!processRecord(line))
       {
@@ -146,7 +146,7 @@ bool FixedLengthParser::parse()
       // ... unless it's the end of the stream.
       if (!is.eof())
       {
-        if (is.gcount() == 132)
+        if (is.gcount() == 134)
         {
           log(Logger::Level::Error) << "Line " << lineNo << " has no EOL or exceeds 132 characters." << endl;
         }
